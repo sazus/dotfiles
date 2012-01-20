@@ -1,0 +1,20 @@
+"---------------------------------------------------------------------------
+" プラグイン設定 plugin
+"---------------------------------------------------------------------------
+" pathogen.vim関連の設定(プラグイン管理)
+" set runtimepath+=$HOME/.vim                 " ランタイムパスの追加
+call pathogen#runtime_append_all_bundles()    " デフォルトのruntimepath/bundleに
+call pathogen#helptags()
+
+" neocomplcache.vim関連の設定(自動で補完リストを出す)
+let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+
+" srcexpl.vim関連の設定(ソースexplore)
+" F8にてTrinityToggleAllを割り当てる
+nmap <F8> :TrinityToggleAll<CR>
+" Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_jumpKey = "<ENTER>"
+" Set "Space" key for back from the definition context
+let g:SrcExpl_gobackKey = "<SPACE>"
+
+" 
