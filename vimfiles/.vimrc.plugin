@@ -8,7 +8,7 @@ filetype off    " Vundleの処理が終わり次第、
                 " 下記の filetype plugin indent on でftppluginとindentを
                 " 読み込むように指定している。
 
-set rtp+=~/dotfiles/vimfiles/vundle.git/    " Vundleの初期化
+set rtp+=~/dotfiles/vimfiles/vundle/    " Vundleの初期化
 call vundle#rc()
 
 " memo "
