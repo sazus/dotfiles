@@ -1,0 +1,160 @@
+###
+### This file Subversion configures various client-side behaviors.
+### how to use this file.
+###
+
+### Section for authentication and authorization customizations.
+[auth]
+## 認証プラグイン関連
+##  Windows
+# Password-stores = Windows-cryptoapi
+##  Mac OS X
+# Password-stores = keychain
+##  Unix
+#       Ubuntuで、Password for '(null)' GNOME keyring:と出てしまう対応
+password-stores =
+## Subversionでパスワードを保存しない(デフォルトは、'yes'で保存している)
+store-password = no
+##  パスワード以外の情報も保存しない(デフォルトは、'yes'で保存している)
+store-auth-creds = no
+##  既に保存された情報を消す場合は
+##  ~/.subversion/auth/svn.simple/ にあるハッシュっぽい名前の
+##  ファイルを消す事
+
+### Section for configuring external helper applications.
+[helpers]
+## コメント書く時のエディター指定
+#editor-cmd = vim
+## 差分を取る時のツール指定
+#diff-cmd = meld
+## 3つの差分を取る時のツール指定と設定
+##    設定(別途 optionで、'--diff-program' 必要)
+# diff3-has-program-arg = [yes | no]
+##    ツール指定
+# diff3-cmd = meld
+## マージをする時のツール指定
+#merge-tool-cmd = meld
+
+
+### Section for configuring miscelleneous Subversion options.
+[miscellany]
+##   最初にインポートしたときにSubversionとしての属性を自動的に変更するかの設定
+## $Date$、$Rev$などのキーワード置き換えしている場合には、インポートした
+## ファイルの属性となるので、yesとする。(Defaultは、noです。)
+#        有効(yes)にしておく事。
+#        linuxにてtxtが、下記のMIME typeを指定しないと
+#        バイナリ扱いになってしまう。
+enable-auto-props = yes
+## Subversionで、無視する(バージョン管理しない)ファイル・ディレクトリの設定
+global-ignores = *~ ctags* *.lpp *.obj *.shc *lst *.abs *.ctx *.hlk *lbk *.map *.mot *.shg *.usr *.o moc_* *.user *.desktop release debug *.lo *.la *.al *.libs xst _xmsgs .git
+## logメッセージのエンコードの設定
+# log-encoding = utf-8
+## Subversionで管理されているファイルのタイムスタンプ固定
+## checkoutしただけで、変更がない場合にはタイムスタンプを更新しない。
+## デフォルトでは'no'
+use-commit-times = yes
+
+
+### Section for configuring automatic properties.
+[auto-props]
+## 属性(プロパティ)を設定するセクション
+##
+## memo
+## svn:keywords (キーワード置き換え用の設定値)
+##   コミット、インポート時に時間やファイル名、リビジョンなどの動的な
+##   情報についてを、指定のキーワードと置き換えしてくれる。
+##   ex) svn:keywords=id Date Author Rev URL
+## svn:mime-type (MIMEタイプの設定)
+##   Subversionで見るMIMEタイプの設定
+##   非テキスト系のMIMEタイプを設定しておくとバイナリファイルとして扱う。
+## svn:eol-style (EOF、改行コードの設定)
+##   コミット後のEOF、改行の扱いを決めます。
+##
+## いろいろ考えてもいいけど、めんどくちゃいから、
+## 下記サイトからのコピペにしたよ。+ xlinxのISE関連の一部を追加したよ.
+## (vhd関連とか)
+## http://trac.symfony-project.org/wiki/SymfonyRepositoryTips
+##  Scriptish formats
+*.bat        = svn:eol-style=native; svn:keywords=Id; svn-mine-type=text/plain
+*.bsh        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/x-beanshell
+*.cgi        = svn:eol-style=native; svn:keywords=Id; svn-mine-type=text/plain
+*.cmd        = svn:eol-style=native; svn:keywords=Id; svn-mine-type=text/plain
+*.js         = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/javascript
+*.php        = svn:eol-style=native; svn:keywords=Id Rev Date; svn:mime-type=text/x-php
+*.pl         = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/x-perl; svn:executable
+*.pm         = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/x-perl
+*.py         = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/x-python; svn:executable
+*.sh         = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/x-sh; svn:executable
+
+##  Image formats
+*.bmp        = svn:mime-type=image/bmp
+*.gif        = svn:mime-type=image/gif
+*.ico        = svn:mime-type=image/ico
+*.jpeg       = svn:mime-type=image/jpeg
+*.jpg        = svn:mime-type=image/jpeg
+*.png        = svn:mime-type=image/png
+*.tif        = svn:mime-type=image/tiff
+*.tiff       = svn:mime-type=image/tiff
+*.svg        = svn.mime-type=image/svg+xml
+
+## Data formats
+*.pdf        = svn:mime-type=application/pdf
+*.avi        = svn:mime-type=video/avi
+*.doc        = svn:mime-type=application/msword
+*.eps        = svn:mime-type=application/postscript
+*.gz         = svn:mime-type=application/gzip
+*.mov        = svn:mime-type=video/quicktime
+*.mp3        = svn:mime-type=audio/mpeg
+*.ppt        = svn:mime-type=application/vnd.ms-powerpoint
+*.ps         = svn:mime-type=application/postscript
+*.psd        = svn:mime-type=application/photoshop
+*.rdf        = svn:eol-style=native; svn:keywords=Id
+*.rss        = svn:eol-style=native; svn:keywords=Id
+*.rtf        = svn:mime-type=text/rtf
+*.swf        = svn:mime-type=application/x-shockwave-flash
+*.tgz        = svn:mime-type=application/gzip
+*.wav        = svn:mime-type=audio/wav
+*.xls        = svn:mime-type=application/vnd.ms-excel
+*.zip        = svn:mime-type=application/zip
+*.ise        = svn:mime-type=application/octet-stream
+*.tbw        = svn:mime-type=application/octet-stream
+*.tar         = svn:mime-type=application/x-tar
+
+## Text formats
+.htaccess    = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.css        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/css
+*.dtd        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/xml
+*.html       = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/html
+*.ini        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.sql        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/x-sql
+#*.txt        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.txt        = svn:eol-style=native; svn:mime-type=text/plain
+*.xhtml      = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/xhtml+xml
+*.xml        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/xml
+*.xsd        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/xml
+*.xsl        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/xml
+*.xslt       = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/xml
+*.xul        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/xul
+*.yml        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+CHANGES      = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+COPYING      = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+INSTALL      = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+#Makefile*    = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+Makefile*    = svn:eol-style=native; svn:mime-type=text/plain
+README       = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+TODO         = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.npl        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.do         = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.ucf        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.hex        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+
+## Code formats
+#*.c          = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.c          = svn:eol-style=native; svn:mime-type=text/plain
+#*.cpp        = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.cpp        = svn:eol-style=native; svn:mime-type=text/plain
+#*.h          = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.h          = svn:eol-style=native; svn:mime-type=text/plain
+#*.java       = svn:eol-style=native; svn:keywords=Id; svn:mime-type=text/plain
+*.java       = svn:eol-style=native; svn:mime-type=text/plain
+
