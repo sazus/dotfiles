@@ -1,6 +1,7 @@
-#!/bin/bash 
+#!/bin/bash -x 
 
 cd `dirname $0`
+SHELLSCRIPT_PATH=`pwd`
 pwd
 
 ###############################################################################
@@ -38,16 +39,16 @@ setup_vundle() {
 #
 setup_ln() {
 	if [ ! -L ~/.vimrc ]; then
-        	ln -s vimfiles/.vimrc ~/.vimrc
+        	ln -s ${SHELLSCRIPT_PATH}/vimfiles/.vimrc ~/.vimrc
 	fi
 	if [ ! -L ~/.gitconfig ]; then
-		ln -s gitfiles/.gitconfig ~/.gitconfig
+		ln -s ${SHELLSCRIPT_PATH}/gitfiles/.gitconfig ~/.gitconfig
 	fi
 	if [ ! -L ~/.subversion/config ]; then
 	        if [ -e ~/.subversion/config ]; then
         	    mv ~/.subversion/config ~/.subversion/config_$(date +%Y-%m-%d)
        		 fi
-		ln -s  svnfiles/config ~/.subversion/config
+		ln -s ${SHELLSCRIPT_PATH}/svnfiles/config ~/.subversion/config
 	fi
 }
 
