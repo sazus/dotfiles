@@ -1,4 +1,4 @@
 --append=yes
 --recurse=yes
---langmap=c,c++
+--languages=c,c++
 
